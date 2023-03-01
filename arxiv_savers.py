@@ -48,9 +48,9 @@ def batch_download_ID(id, save_id):
     batch_donwload(feed, directory)
 
 def main():
-    batch_download_ID("AI", "ai")
     batch_download_ID("RO", "ro")
     batch_download_ID("CV", "cv")
+    batch_download_ID("AI", "ai")
     batch_download_ID("GR", "gr")
 
 main()
