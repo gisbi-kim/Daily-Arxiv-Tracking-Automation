@@ -1,3 +1,5 @@
+[![Run arxiv_saver_to_db.py and commit changes](https://github.com/gisbi-kim/daily_arxiv_automation/actions/workflows/main.yml/badge.svg?branch=main)](https://github.com/gisbi-kim/daily_arxiv_automation/actions/workflows/main.yml)
+
 # Daily Arxiv Automation
 ## Features 
 ### 1. Automatically parse a daily arxiv rss
