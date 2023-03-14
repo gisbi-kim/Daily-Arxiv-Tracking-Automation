@@ -22,6 +22,7 @@ jobs:
         run: |
           python3 -m pip install --upgrade pip
           pip install feedparser
+          pip install requests
           
       - name: Run arxiv_saver_to_db.py
         run: python3 arxiv_saver_to_db.py
