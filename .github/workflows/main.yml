@@ -8,6 +8,7 @@ on:
 
 jobs:
   build:
+    name: update
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -27,7 +28,7 @@ jobs:
       - name: Run arxiv_saver_to_db.py
         run: python3 arxiv_saver_to_db.py
 
-      - name: Push the updated db
+      - name: Push new updated db
         uses: github-actions-x/commit@v2.9
         with:
           github-token: ${{ secrets.MY_GITHUB_TOKEN }}
