@@ -1,8 +1,8 @@
 # Daily Arxiv Automation
 ## Features 
 ### 1. Automatically parse a daily arxiv rss
-  1. a. parse information and save into the database (sqlite3)
-  2. b. download the all pdfs
+  - a. parse information and save into the database (sqlite3)
+  - b. (optional) download the all pdfs
     - with auto-naming as {YY} {Title}
     - example
       - <img width="488" alt="image" src="https://user-images.githubusercontent.com/14989535/221883912-90e6c89b-1b51-498a-b51b-969736575140.png">
