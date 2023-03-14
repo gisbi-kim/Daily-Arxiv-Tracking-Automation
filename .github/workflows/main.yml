@@ -1,6 +1,8 @@
 name: Run arxiv_saver_to_db.py and commit changes
 
 on:
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
   schedule:
     - cron: '0 * * * *' # every hour
 
