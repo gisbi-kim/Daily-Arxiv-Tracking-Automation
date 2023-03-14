@@ -26,11 +26,13 @@ jobs:
           
       - name: Run arxiv_saver_to_db.py
         run: python3 arxiv_saver_to_db.py
-        
-      - name: Commit changes
-        run: |
-          git config --global user.name "Giseop Kim"
-          git config --global user.email "gisbi.kim@gmail.com"
-          git add arxiv_papers.db
-          git commit -m "Auto-commit changes to arxiv_papers.db"
-          git push
+
+      - name: Push the updated db
+        uses: github-actions-x/commit@v2.9
+        with:
+          github-token: ${{ secrets.MY_GITHUB_TOKEN }}
+          commit-message: "Auto-commit changes to arxiv_papers.db"
+          files: arxiv_papers.db
+          rebase: 'true'
+          name: ${{ env.MY_USER_NAME }}
+          email: ${{ env.MY_USER_EMAIL }}
