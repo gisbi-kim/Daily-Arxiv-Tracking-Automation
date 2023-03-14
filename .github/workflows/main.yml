@@ -30,8 +30,8 @@ jobs:
 
       - name: Set up Git
         run: |
-          git config --local user.email ${{ env.MY_USER_EMAIL }}
-          git config --local user.name ${{ env.MY_USER_NAME }}
+          git config --local user.email "${{ env.MY_USER_EMAIL }}"
+          git config --local user.name "${{ env.MY_USER_NAME }}"
 
       - name: Push changes to GitHub
         run: |
