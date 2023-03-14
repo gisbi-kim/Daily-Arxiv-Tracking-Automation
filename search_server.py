@@ -11,7 +11,7 @@ import sqlite3
 import json
 
 app = FastAPI()
-db_path = "arxiv_papers.db"
+db_path = "arxiv_papers.sqlite3"
 
 
 @app.get("/{table}/keywords/OR/{keyword}")
