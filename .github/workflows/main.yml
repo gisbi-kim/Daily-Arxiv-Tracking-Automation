@@ -29,14 +29,13 @@ jobs:
         run: python3 arxiv_saver_to_db.py
 
       - name: Add file to Git staging area 
-        run: git add arxiv_papers.db
+        run: git add arxiv_papers.sqlite3
 
       - name: Push new updated db
         uses: github-actions-x/commit@v2.9
         with:
           github-token: ${{ secrets.MY_GITHUB_TOKEN }}
-          commit-message: "Auto-commit changes to arxiv_papers.db"
-          files: arxiv_papers.db
-          rebase: 'true'
+          commit-message: "Auto-commit changes to arxiv_papers.sqlite3"
+          files: arxiv_papers.sqlite3
           name: ${{ env.MY_USER_NAME }}
           email: ${{ env.MY_USER_EMAIL }}
