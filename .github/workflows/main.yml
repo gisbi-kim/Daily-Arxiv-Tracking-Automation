@@ -28,12 +28,20 @@ jobs:
       - name: Run arxiv_saver_to_db.py
         run: python3 arxiv_saver_to_db.py
 
+      - name: Check for changes
+        id: git-diff
+        run: |
+          git diff --quiet || echo "::set-output name=has_changes::true"
+        continue-on-error: true
+
       - name: Set up Git
+        if: steps.git-diff.outputs.has_changes == 'true'
         run: |
           git config --global user.email "gisbi.kim@gmail.com"
           git config --global user.name "Giseop Kim"
 
       - name: Push changes to GitHub
+        if: steps.git-diff.outputs.has_changes == 'true'
         run: |
           git add arxiv_papers.sqlite3
           git commit -m "Auto-commit changes to arxiv_papers.sqlite3"
