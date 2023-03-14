@@ -70,7 +70,7 @@ def batch_download_ID(id, save_id, conn, download_pdf):
 
 
 def main():
-    conn = sqlite3.connect("arxiv_papers.db")
+    conn = sqlite3.connect("arxiv_papers.sqlite3")
 
     download_pdf_list = [False]
     for download_pdf in download_pdf_list:
