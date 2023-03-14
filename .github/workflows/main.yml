@@ -37,6 +37,6 @@ jobs:
         run: |
           git add arxiv_papers.sqlite3
           git commit -m "Auto-commit changes to arxiv_papers.sqlite3"
-          git push https://https://github.com/gisbi-kim/daily_arxiv_automation HEAD:main
+          git push https://github.com/gisbi-kim/daily_arxiv_automation HEAD:main
         env:
           PAT: ${{ secrets.MY_GITHUB_TOKEN }}
