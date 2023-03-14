@@ -6,7 +6,7 @@ import json
 st.title("arxiv paper search app")
 
 search_type = st.radio("Select the search type", ["ro", "cv", "ai"])
-AND_or_OR = st.radio("Select AND or OR", ["AND", "OR"])
+AND_or_OR = st.radio("Select OR or AND", ["OR", "AND"])
 
 keywords = st.text_input("Enter keywords separated by commas")
 keywords = keywords.split(",")
