@@ -78,6 +78,16 @@ def batch_download_ID(id, save_id, conn, download_pdf):
 def main():
     conn = sqlite3.connect("arxiv_papers.sqlite3")
 
+    db_size = os.path.getsize("arxiv_papers.sqlite3")/(1024*1024)
+    date = datetime.datetime.now().strftime('%Y-%m-%d')
+
+    # 100mb under (because github allows a single file up to 100mb)
+    if db_size > 99:
+        os.rename("arxiv_papers.sqlite3", f"arxiv_papers_upto_{date}.sqlite3")
+        conn = sqlite3.connect("arxiv_papers.sqlite3")
+    else:
+        conn = sqlite3.connect("arxiv_papers.sqlite3")
+
     batch_download_ID("RO", "ro", conn, False)
     batch_download_ID("CV", "cv", conn, False)
     batch_download_ID("AI", "ai", conn, False)

@@ -1,6 +1,8 @@
+import os
 import streamlit as st
 import configparser
 import requests
+import datetime
 import json
 import re
 
@@ -31,16 +33,23 @@ with st.sidebar:
         st.cache_resource()
 
 # Create two columns
-col1, col2 = st.columns([0.2, 0.8])
+col1, col2 = st.columns([1, 4])
 with col1:
-    st.image("https://bpb-us-e1.wpmucdn.com/blogs.cornell.edu/dist/8/7752/files/2021/02/arxiv-logo-1.png", width=150)
+    st.markdown("<p style='display: flex; justify-content: center'><img src='https://bpb-us-e1.wpmucdn.com/blogs.cornell.edu/dist/8/7752/files/2021/02/arxiv-logo-1.png' width='150'></p>", unsafe_allow_html=True)
 with col2:
     st.title("Paper Search App")
 
-search_type = st.radio("Select the search type", [
-                       "RO: Robotics", "CV: Computer Vision and Pattern Recognition",
-                       "AI: Artificial Intelligence", "LG: Machine Learning"])
-AND_or_OR = st.radio("Select OR or AND", ["OR", "AND"])
+st.markdown("<hr>", unsafe_allow_html=True)
+
+col1, col2 = st.columns([1, 2])
+with col1:
+    search_type = st.radio("Select the search type", [
+        "RO: Robotics", "CV: Computer Vision and Pattern Recognition",
+                        "AI: Artificial Intelligence", "LG: Machine Learning"])
+with col2:
+    AND_or_OR = st.radio("Select OR or AND", ["OR", "AND"])
+
+st.markdown("<hr>", unsafe_allow_html=True)
 
 keywords = st.text_input("🔍 Enter keywords separated by commas")
 keywords = keywords.split(",")
@@ -80,8 +89,6 @@ if all(len(keyword) >= 2 for keyword in keywords):
 
         def highlight_keyword(text, keywords):
             pattern = re.compile('|'.join(keywords), flags=re.IGNORECASE)
-            # highlighted_text = pattern.sub(
-            #     lambda x: f"<mark>{x.group()}</mark>", text)
             highlighted_text = pattern.sub(
                 lambda x: f"<mark style='background-color: #ffffb3;'>{x.group()}</mark>", text)
             return highlighted_text
@@ -111,3 +118,12 @@ if all(len(keyword) >= 2 for keyword in keywords):
         st.write("Error loading JSON:", e)
 else:
     st.write("Please enter at least two alphabets for each keyword.")
+
+
+st.markdown("<hr>", unsafe_allow_html=True)
+
+st.write("Author: gisbi.kim@gmail.com")
+
+last_modified = os.path.getmtime(__file__)
+st.write("Last update: ", datetime.datetime.fromtimestamp(
+    last_modified).strftime("%Y-%m-%d"))
