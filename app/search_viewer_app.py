@@ -1,3 +1,4 @@
+import subprocess
 import os
 import streamlit as st
 import configparser
@@ -6,6 +7,11 @@ import datetime
 import json
 import re
 from search_viewer_app_lib import *
+
+if is_address_available(('127.0.0.1', 8000)):
+    subprocess.run(['python3', 'search_server.py'])
+else:
+    print("The server is already running. no need to restart it.")
 
 st.set_page_config(
     layout="wide",

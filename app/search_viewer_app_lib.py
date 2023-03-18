@@ -5,6 +5,23 @@ import requests
 import datetime
 import json
 import re
+import socket
+
+
+def is_address_available(address):
+    """
+    Check if the given address is available.
+    :param address: A tuple of (ip, port) representing the address to check.
+    :return: True if the address is available, False otherwise.
+    """
+    try:
+        # Create a new socket and try to connect to the address
+        with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as sock:
+            sock.settimeout(1)  # Set a timeout for the connection attempt
+            sock.connect(address)
+        return False  # The connection succeeded, so the address is not available
+    except ConnectionRefusedError:
+        return True  # The connection failed, so the address is available
 
 
 def spawn_darkmode_sidebar():
