@@ -1,6 +1,6 @@
 import sqlite3
 
-db_path = "combined_db.sqlite3"
+db_path = "arxiv_papers.sqlite3"
 
 print("start indexing ...")
 with sqlite3.connect(db_path) as conn:
@@ -9,7 +9,9 @@ with sqlite3.connect(db_path) as conn:
     # 모든 테이블 이름을 조회
     cursor.execute("SELECT name FROM sqlite_master WHERE type='table';")
     table_names = cursor.fetchall()
-
+    print(f"table_names {table_names}")
+    assert 0 < len(
+        table_names), 'please using python3 db_utils/this_file.py at the parent path.'
     for table_name in table_names:
         # 각 테이블에 대해 색인 생성
         try:

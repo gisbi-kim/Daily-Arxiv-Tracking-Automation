@@ -17,6 +17,8 @@ for db_file in db_files:
     db_cursor = db_conn.cursor()
     db_cursor.execute("SELECT name FROM sqlite_master WHERE type='table';")
     tables = [table[0] for table in db_cursor.fetchall()]
+    assert 0 < len(
+        tables), 'please using python3 db_utils/merge_databases.py at the parent path.'
     for table in tables:
         db_cursor.execute(f"SELECT title, year, summary, link FROM {table}")
         papers = db_cursor.fetchall()
