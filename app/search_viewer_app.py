@@ -7,7 +7,12 @@ import json
 import re
 from search_viewer_app_lib import *
 
-st.set_page_config(layout="wide")  # this must be at the top
+st.set_page_config(
+    layout="wide",
+    page_title="arxiv searcher",
+    page_icon=":house:",
+    initial_sidebar_state="expanded"
+)
 
 spawn_darkmode_sidebar()
 spawn_title()
@@ -26,7 +31,7 @@ else:
     DEFAULT_NUM_PAPERS_PER_PAGE = 10
     with col2:
         page_size = st.selectbox("Select the number of papers per page", [
-            5, 10, 15, 20], index=1)
+            5, 10, 15, 20, 30, 50], index=1)
     NUM_PAPERS_PER_PAGE = page_size or DEFAULT_NUM_PAPERS_PER_PAGE
     st.write(f"🍀 {NUM_PAPERS_PER_PAGE} items per page")
 

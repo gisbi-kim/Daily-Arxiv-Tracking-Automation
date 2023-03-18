@@ -106,7 +106,7 @@ def spawn_item_row(item, keywords):
     created_at_yyyy = created_at[:4]
     created_at_mmdd = created_at[5:10]
     summary = val[1]
-    link = val[2]
+    link_pdf = val[2]
 
     col1, col2, col3, col4 = st.columns([0.5, 2, 5, 0.5])
     with col1:
@@ -121,7 +121,10 @@ def spawn_item_row(item, keywords):
         st.markdown(highlighted_summary, unsafe_allow_html=True)
     with col4:
         st.write(
-            f"<div style='text-align: center;'><a href='{link}'>arxiv</a></div>", unsafe_allow_html=True)
+            f"<div style='text-align: center;'><a href='{link_pdf}'>pdf</a></div>", unsafe_allow_html=True)
+        link_abs = link_pdf.replace("pdf", "abs")[:-4]
+        st.write(
+            f"<div style='text-align: center;'><a href='{link_abs}'>abs</a></div>", unsafe_allow_html=True)
 
 
 def spawn_sidebar_md(msg):
