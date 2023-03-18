@@ -61,12 +61,6 @@ def batch_donwload(feed, directory, schema_name, conn, download_pdf=False):
         except:
             pass
 
-        # Download PDF and save to file
-        if download_pdf:
-            response = requests.get(link)
-            with open(filename, 'wb') as f:
-                f.write(response.content)
-
 
 def batch_download_ID(id, save_id, conn, download_pdf):
     directory = f'arxiv_pdfs_{save_id}'
@@ -84,13 +78,11 @@ def batch_download_ID(id, save_id, conn, download_pdf):
 def main():
     conn = sqlite3.connect("arxiv_papers.sqlite3")
 
-    download_pdf_list = [False]
-    for download_pdf in download_pdf_list:
-        batch_download_ID("RO", "ro", conn, download_pdf)
-        batch_download_ID("CV", "cv", conn, download_pdf)
-        batch_download_ID("AI", "ai", conn, download_pdf)
-        batch_download_ID("LG", "lg", conn, download_pdf)
-        batch_download_ID("GR", "gr", conn, download_pdf)
+    batch_download_ID("RO", "ro", conn, False)
+    batch_download_ID("CV", "cv", conn, False)
+    batch_download_ID("AI", "ai", conn, False)
+    batch_download_ID("LG", "lg", conn, False)
+    batch_download_ID("GR", "gr", conn, False)
 
     conn.close()
 
