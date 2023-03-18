@@ -1,6 +1,6 @@
 [![Run arxiv_saver_to_db.py and commit changes](https://github.com/gisbi-kim/daily_arxiv_automation/actions/workflows/main.yml/badge.svg?branch=main)](https://github.com/gisbi-kim/daily_arxiv_automation/actions/workflows/main.yml)
 
-# Daily Arxiv Automation
+# DATA: Daily Arxiv Tracking Automation
 ## Features 
 ### 1. Automatically parse a daily arxiv rss 
   - a. `python3 arxiv_saver_to_db.py`: parse information and save into the database (sqlite3)
