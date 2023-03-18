@@ -17,4 +17,5 @@
 - Just do `run_app.sh` 
   - The dependencies: fastapi, uvicorn, and streamlit
 - example 
-  - tba
+  - <img width="1458" alt="image" src="https://user-images.githubusercontent.com/14989535/226102148-1bf1ad07-b531-4dc6-b6f1-73b7dd2339c5.png">
+
