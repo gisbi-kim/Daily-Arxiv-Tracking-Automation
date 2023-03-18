@@ -67,15 +67,17 @@ def spawn_search_zone():
     return keywords
 
 
-def get_data_from_server(table_to_search, AND_or_OR, keywords):
+def get_data_from_server(table_to_search, AND_or_OR, keywords, time_order=True):
     url = f"http://127.0.0.1:8000/{table_to_search}/keywords/{AND_or_OR}/{','.join(keywords)}"
     response = requests.get(url)
     json_data = json.loads(response.text)
-    date_idx = 0
-    sorted_json_data = sorted(json_data.items(),
-                              key=lambda item: item[1][date_idx],
-                              reverse=True)
-    return dict(sorted_json_data)
+    if time_order:
+        date_idx = 0
+        sorted_json_data = sorted(json_data.items(),
+                                  key=lambda item: item[1][date_idx],
+                                  reverse=True)
+        json_data = dict(sorted_json_data)
+    return json_data
 
 
 def all_keywords_has_more_including_than_k_len(keywords, k):

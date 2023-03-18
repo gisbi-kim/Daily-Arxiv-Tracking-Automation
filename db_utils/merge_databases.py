@@ -1,3 +1,4 @@
+import datetime
 import sqlite3
 import os
 
@@ -20,16 +21,23 @@ for db_file in db_files:
     assert 0 < len(
         tables), 'please using python3 db_utils/merge_databases.py at the parent path.'
     for table in tables:
-        db_cursor.execute(f"SELECT title, year, summary, link FROM {table}")
+        db_cursor.execute(
+            f"SELECT title, year, summary, link, created_at FROM {table}")
         papers = db_cursor.fetchall()
         cursor = conn.cursor()
         cursor.execute(
-            f"CREATE TABLE IF NOT EXISTS {table} (title TEXT, year INTEGER, summary TEXT, link TEXT, created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP)")
+            f"CREATE TABLE IF NOT EXISTS {table} (title TEXT, year INTEGER, summary TEXT, link TEXT, created_at TIMESTAMP)")
         for paper in papers:
             cursor.execute(f"SELECT * FROM {table} WHERE title=?", (paper[0],))
             if not cursor.fetchone():
                 datum_info = '(title, year, summary, link, created_at)'
-                datum = (paper[0], paper[1], paper[2], paper[3], None)
+
+                t = paper[4]
+                created_time = datetime.datetime(
+                    int(t[:4]), int(t[5:7]), int(t[8:10]),
+                    int(t[11:13]), int(t[14:16]), int(t[17:19]), 0)
+
+                datum = (paper[0], paper[1], paper[2], paper[3], created_time)
                 cursor.execute(
                     f"INSERT INTO {table} {datum_info} VALUES (?, ?, ?, ?, ?)", datum)
         conn.commit()
