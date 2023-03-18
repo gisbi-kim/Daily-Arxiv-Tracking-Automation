@@ -1,2 +1,2 @@
-python3 search_server.py &
-streamlit run search_viewer_app.py
+python3 app/search_server.py &
+streamlit run app/search_viewer_app.py

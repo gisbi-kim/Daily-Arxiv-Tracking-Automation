@@ -43,7 +43,7 @@ def batch_donwload(feed, directory, schema_name, conn, download_pdf=False):
 
 
 def batch_download_ID(id, save_id, conn, download_pdf):
-    directory = f'arxiv_pdfs_{save_id}'
+    directory = f'downloads/arxiv_pdfs_{save_id}'
     if not os.path.exists(directory):
         os.mkdir(directory)
 
