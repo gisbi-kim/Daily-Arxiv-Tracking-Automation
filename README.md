@@ -20,3 +20,6 @@
   - The dependencies: fastapi, uvicorn, and streamlit
 - example 
   - The image of the top!
+
+## TODO
+- sqlite3 파일을 github repository (100mb 제한) 가 아닌 원격 저장소에서 pull해오고 push하기
