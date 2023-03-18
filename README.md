@@ -1,6 +1,8 @@
 [![Run arxiv_saver_to_db.py and commit changes](https://github.com/gisbi-kim/daily_arxiv_automation/actions/workflows/main.yml/badge.svg?branch=main)](https://github.com/gisbi-kim/daily_arxiv_automation/actions/workflows/main.yml)
 
 # DARTA: Daily Arxiv Tracking Automation
+<img width="1509" alt="스크린샷 2023-03-18 23 55 16" src="https://user-images.githubusercontent.com/14989535/226113612-035b0e3e-b541-427f-8104-7343fdecbee6.png">
+
 ## Features 
 ### 1. Automatically parse a daily arxiv rss 
   - a. `python3 arxiv_saver_to_db.py`: parse information and save into the database (sqlite3)
@@ -17,5 +19,4 @@
 - Just do `run_app.sh` 
   - The dependencies: fastapi, uvicorn, and streamlit
 - example 
-  - <img width="1458" alt="image" src="https://user-images.githubusercontent.com/14989535/226102148-1bf1ad07-b531-4dc6-b6f1-73b7dd2339c5.png">
-
+  - The image of the top!
