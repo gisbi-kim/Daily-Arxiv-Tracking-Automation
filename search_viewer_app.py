@@ -2,6 +2,7 @@ import streamlit as st
 import requests
 import json
 
+st.set_page_config(layout="wide")
 
 st.title("arxiv paper search app")
 
@@ -10,17 +11,30 @@ AND_or_OR = st.radio("Select OR or AND", ["OR", "AND"])
 
 keywords = st.text_input("Enter keywords separated by commas")
 keywords = keywords.split(",")
+
+col1, col2, col3 = st.columns([1, 2, 5])
+with col1:
+    st.write("Date")
+with col2:
+    st.write(f"Title")
+with col3:
+    st.write("Abstract")
+
 if all(len(keyword) >= 2 for keyword in keywords):
     url = f"http://127.0.0.1:8000/{search_type}/keywords/{AND_or_OR}/{','.join(keywords)}"
     response = requests.get(url)
     try:
         json_data = json.loads(response.text)
         for key, val in json_data.items():
-            col1, col2 = st.columns([1, 4])
+            col1, col2, col3 = st.columns([1, 2, 5])
+            created_at = str(val[0])
+            summary = val[1]
             with col1:
-                st.write(f"**{key}**")
+                st.write(created_at[:10])
             with col2:
-                st.write(val)
+                st.write(f"**{key}**")
+            with col3:
+                st.write(summary)
     except ValueError as e:
         st.write("Error loading JSON:", e)
 else:
