@@ -33,8 +33,9 @@ async def search_keyword_OR(table: str, keyword: str):
         for row in rows:
             title = row[0]
             summary = row[2]
-            created_at = row[-1]
-            result[title] = [created_at, summary]
+            link = row[3]
+            created_at = row[4]
+            result[title] = [created_at, summary, link]
 
     conn.close()
 
@@ -58,9 +59,11 @@ async def search_keyword_AND(table: str, keyword: str):
     for row in rows:
         title = row[0]
         summary = row[2]
+        link = row[3]
+        created_at = row[4]
         created_at = row[-1]
         if all(kw.lower() in (title + summary).lower() for kw in keywords):
-            result[title] = [created_at, summary]
+            result[title] = [created_at, summary, link]
 
     conn.close()
 
