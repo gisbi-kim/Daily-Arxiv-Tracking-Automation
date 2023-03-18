@@ -3,5 +3,4 @@ uvicorn
 fastapi
 configparser
 requests
-re
 sqlite3
