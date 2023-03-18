@@ -33,7 +33,8 @@ else:
         page_size = st.selectbox("Select the number of papers per page", [
             5, 10, 15, 20, 30, 50], index=1)
     NUM_PAPERS_PER_PAGE = page_size or DEFAULT_NUM_PAPERS_PER_PAGE
-    st.write(f"🍀 {NUM_PAPERS_PER_PAGE} items per page")
+    st.write(
+        f"🍀 {NUM_PAPERS_PER_PAGE} items per page (recent one is displayed first)")
 
     table_to_search = search_type[:2]
     json_data = get_data_from_server(table_to_search, AND_or_OR, keywords)

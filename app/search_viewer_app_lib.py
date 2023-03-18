@@ -70,7 +70,12 @@ def spawn_search_zone():
 def get_data_from_server(table_to_search, AND_or_OR, keywords):
     url = f"http://127.0.0.1:8000/{table_to_search}/keywords/{AND_or_OR}/{','.join(keywords)}"
     response = requests.get(url)
-    return json.loads(response.text)
+    json_data = json.loads(response.text)
+    date_idx = 0
+    sorted_json_data = sorted(json_data.items(),
+                              key=lambda item: item[1][date_idx],
+                              reverse=True)
+    return dict(sorted_json_data)
 
 
 def all_keywords_has_more_including_than_k_len(keywords, k):
@@ -78,19 +83,18 @@ def all_keywords_has_more_including_than_k_len(keywords, k):
 
 
 def spawn_column_names():
-    col1, col2, col3, col4 = st.columns([0.5, 2, 5, 0.5])
+    def centered_msg(msg):
+        return f"<p style='text-align: center; font-weight: bold;'>{msg}</p>"
+
+    col1, col2, col3, col4 = st.columns([0.5, 2.0, 5.0, 0.5])
     with col1:
-        st.markdown(
-            f"<p style='text-align: center; font-weight: bold;'>Date</p>", unsafe_allow_html=True)
+        st.markdown(centered_msg("Data"), unsafe_allow_html=True)
     with col2:
-        st.markdown(
-            f"<p style='text-align: center; font-weight: bold;'>Title</p>", unsafe_allow_html=True)
+        st.markdown(centered_msg("Title"), unsafe_allow_html=True)
     with col3:
-        st.markdown(
-            f"<p style='text-align: center; font-weight: bold;'>Abstract</p>", unsafe_allow_html=True)
+        st.markdown(centered_msg("Abstract"), unsafe_allow_html=True)
     with col4:
-        st.markdown(
-            f"<p style='text-align: center; font-weight: bold;'>Link</p>", unsafe_allow_html=True)
+        st.markdown(centered_msg("Link"), unsafe_allow_html=True)
 
 
 def highlight_keyword(text, keywords):
@@ -102,13 +106,14 @@ def highlight_keyword(text, keywords):
 
 def spawn_item_row(item, keywords):
     key, val = item
+
     created_at = str(val[0])
     created_at_yyyy = created_at[:4]
     created_at_mmdd = created_at[5:10]
     summary = val[1]
     link_pdf = val[2]
 
-    col1, col2, col3, col4 = st.columns([0.5, 2, 5, 0.5])
+    col1, col2, col3, col4 = st.columns([0.5, 2.0, 5.0, 0.5])
     with col1:
         st.markdown(
             f"<p style='text-align: center'>{created_at_yyyy}<br>{created_at_mmdd}</p>", unsafe_allow_html=True)
@@ -133,7 +138,6 @@ def spawn_sidebar_md(msg):
 
 def spawn_info():
     st.write("Author: gisbi.kim@gmail.com")
-
     last_modified = os.path.getmtime(__file__)
     st.write("Last update: ", datetime.datetime.fromtimestamp(
         last_modified).strftime("%Y-%m-%d"))
