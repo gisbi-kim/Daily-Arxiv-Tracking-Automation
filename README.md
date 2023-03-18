@@ -1,7 +1,7 @@
 [![Run arxiv_saver_to_db.py and commit changes](https://github.com/gisbi-kim/daily_arxiv_automation/actions/workflows/main.yml/badge.svg?branch=main)](https://github.com/gisbi-kim/daily_arxiv_automation/actions/workflows/main.yml)
 
 # DARTA: Daily Arxiv Tracking Automation
-<img width="1509" alt="스크린샷 2023-03-18 23 55 16" src="https://user-images.githubusercontent.com/14989535/226113612-035b0e3e-b541-427f-8104-7343fdecbee6.png">
+![스크린샷 2023-03-19 01 52 08](https://user-images.githubusercontent.com/14989535/226121228-3b43a547-ff6f-4b27-b71c-1afbe088fe8e.png)
 
 ## Features 
 ### 1. Automatically parse a daily arxiv rss 
