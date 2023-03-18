@@ -1,3 +1,4 @@
 downloads
 arxiv_pdfs*
 .DS_Store
+*__pycache__
