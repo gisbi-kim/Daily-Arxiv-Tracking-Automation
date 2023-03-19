@@ -24,14 +24,18 @@ def is_address_available(address):
         return True  # The connection failed, so the address is available
 
 
+def spawn_empty_sidebar():
+    with st.sidebar:
+        st.markdown("<p style='color: #5e5e5e'>Tip: For <strong>dark</strong> mode, go to <code>Settings</code> at the top-right menu.</p>",
+                    unsafe_allow_html=True)
+
+        st.markdown("<hr style='margin: 5px 0px; 'border: 1px solid #d9d9d9;'>",
+                    unsafe_allow_html=True)
+
+
 def spawn_darkmode_sidebar():
-    # config.toml 파일 경로
     CONFIG_FILE = './.streamlit/config.toml'
-
-    # # config.toml 파일을 읽어옴
     config = configparser.ConfigParser()
-    config.read(CONFIG_FILE)
-
     with st.sidebar:
         config.read(CONFIG_FILE)
         theme_option = st.radio("Select Light/Dark mode", ["Light", "Dark"])

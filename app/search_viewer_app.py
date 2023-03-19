@@ -16,11 +16,12 @@ else:
 st.set_page_config(
     layout="wide",
     page_title="arxiv searcher",
-    page_icon=":house:",
+    page_icon=":fish:",
     initial_sidebar_state="expanded"
 )
 
-spawn_darkmode_sidebar()
+spawn_empty_sidebar()
+# spawn_darkmode_sidebar()
 spawn_title()
 gray_line()
 
@@ -34,10 +35,10 @@ with col1:
 if not all_keywords_has_more_including_than_k_len(keywords, 2):
     st.write("Please enter at least two alphabets for each keyword.")
 else:
-    DEFAULT_NUM_PAPERS_PER_PAGE = 10
+    DEFAULT_NUM_PAPERS_PER_PAGE = 15
     with col2:
         page_size = st.selectbox("Select the number of papers per page", [
-            5, 10, 15, 20, 30, 50], index=1)
+            5, 10, 15, 20, 30, 50], index=2)
     NUM_PAPERS_PER_PAGE = page_size or DEFAULT_NUM_PAPERS_PER_PAGE
     st.write(
         f"🍀 {NUM_PAPERS_PER_PAGE} items per page (recent one is displayed first)")
