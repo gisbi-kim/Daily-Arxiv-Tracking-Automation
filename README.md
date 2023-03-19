@@ -21,5 +21,8 @@
 - example 
   - The image of the top!
 
+## Tips 
+- To make a requirements.txt file, `pipreqs --encoding=utf8` would be helpful.
+
 ## TODO
 - sqlite3 파일을 github repository (100mb 제한) 가 아닌 원격 저장소에서 pull해오고 push하기
