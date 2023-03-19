@@ -57,7 +57,7 @@ def spawn_title():
         st.markdown(f"<p style='display: flex; justify-content: center'>{img_src}</p>",
                     unsafe_allow_html=True)
     with col2:
-        st.title("Paper Search App")
+        st.title(f"Paper Search App")
 
 
 def gray_line():
@@ -156,7 +156,7 @@ def spawn_sidebar_md(msg):
 
 
 def spawn_info():
-    st.write("Author: gisbi.kim@gmail.com")
+    st.write("Author: [gisbi.kim@gmail.com](https://bit.ly/giseopkim)")
     last_modified = os.path.getmtime(__file__)
-    st.write("Last update: ", datetime.datetime.fromtimestamp(
+    st.write("[Last update](https://github.com/gisbi-kim/Daily-Arxiv-Tracking-Automation): ", datetime.datetime.fromtimestamp(
         last_modified).strftime("%Y-%m-%d"))
