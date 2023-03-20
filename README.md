@@ -1,6 +1,10 @@
 [![Run arxiv_saver_to_db.py and commit changes](https://github.com/gisbi-kim/daily_arxiv_automation/actions/workflows/main.yml/badge.svg?branch=main)](https://github.com/gisbi-kim/daily_arxiv_automation/actions/workflows/main.yml)
 
 # DARTA: Daily Arxiv Tracking Automation
+## How to use?
+1. on web: visit [https://arxiv-searcher.onrender.com](https://arxiv-searcher.onrender.com)
+2. on your local machine: `git clone` and `sh run_app.sh`
+
 ![스크린샷 2023-03-19 01 52 08](https://user-images.githubusercontent.com/14989535/226121228-3b43a547-ff6f-4b27-b71c-1afbe088fe8e.png)
 
 ## Features 
