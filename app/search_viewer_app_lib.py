@@ -6,6 +6,7 @@ import datetime
 import json
 import re
 import socket
+import pyautogui
 
 
 def is_address_available(address):
@@ -157,6 +158,11 @@ def spawn_item_row(item, keywords):
 
 def spawn_sidebar_md(msg):
     st.sidebar.markdown(msg)
+
+
+def go_top():
+    if st.button("Back to Top"):
+        pyautogui.press('home')
 
 
 def spawn_info():
