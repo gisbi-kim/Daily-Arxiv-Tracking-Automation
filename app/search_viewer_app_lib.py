@@ -6,6 +6,8 @@ import datetime
 import json
 import re
 import socket
+
+display = os.environ.get('DISPLAY', ':0.0') # DISPLAY가 설정되어 있지 않으면 ':0.0'로 기본값을 설정합니다.
 import pyautogui
 
 
