@@ -1,5 +1,5 @@
 import os
-os.environ['DISPLAY'] = ':0.0'
+#os.environ['DISPLAY'] = ':0.0'
 
 import streamlit as st
 import configparser
@@ -8,7 +8,7 @@ import datetime
 import json
 import re
 import socket
-import pyautogui
+#import pyautogui
 
 
 def is_address_available(address):
