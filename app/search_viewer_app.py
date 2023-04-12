@@ -50,9 +50,15 @@ else:
     num_pages = (total_count - 1) // NUM_PAPERS_PER_PAGE + 1
 
     try:
+        def scroll_to_paper_search_app():
+            pass
+
+        # Add on_change event for current_page
         current_page = st.sidebar.number_input(
-            "Enter a page number", min_value=1, max_value=num_pages, value=1
+            "Enter a page number", min_value=1, max_value=num_pages, value=1,
+            on_change=scroll_to_paper_search_app
         )
+
         start_index = (current_page - 1) * NUM_PAPERS_PER_PAGE
         end_index = min(start_index + NUM_PAPERS_PER_PAGE, total_count)
 
