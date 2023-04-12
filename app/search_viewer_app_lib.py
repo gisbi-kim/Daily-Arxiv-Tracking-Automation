@@ -1,5 +1,5 @@
 import os
-#os.environ['DISPLAY'] = ':0.0'
+# os.environ['DISPLAY'] = ':0.0'
 
 import streamlit as st
 import configparser
@@ -8,7 +8,6 @@ import datetime
 import json
 import re
 import socket
-#import pyautogui
 
 
 def is_address_available(address):
@@ -163,8 +162,35 @@ def spawn_sidebar_md(msg):
 
 
 def go_top():
-    if st.button("Back to Top"):
-        pyautogui.press('home')
+
+    st.markdown(
+        """
+        <style>
+            .back-to-top {
+                position: fixed;
+                bottom: 20px;
+                right: 20px;
+                z-index: 100;
+                font-size: 20px;
+                font-weight: bold;
+                color: white;
+                background-color: #3B3B3B;
+                border: none;
+                border-radius: 50%;
+                padding: 20px;
+                cursor: pointer;
+                box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
+                opacity: 0.7;
+                transition: opacity 0.2s ease-in-out;
+            }
+            .back-to-top:hover {
+                opacity: 1;
+            }
+        </style>
+        """, unsafe_allow_html=True)
+
+    st.markdown(
+        '<a href="#paper-search-app" class="back-to-top">^</a>', unsafe_allow_html=True)
 
 
 def spawn_info():

@@ -65,7 +65,9 @@ else:
     except ValueError as e:
         st.write("Error loading JSON:", e)
 
-#go_top()
+add_go_top_button = True
+if add_go_top_button:
+    go_top()
 
 gray_line()
 spawn_info()
